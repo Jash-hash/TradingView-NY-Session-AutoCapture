@@ -1,0 +1,25 @@
+{
+  "cookies": [
+    {
+      "name": "example_cookie",
+      "value": "dummy_value",
+      "domain": ".tradingview.com",
+      "path": "/",
+      "expires": 1893456000,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://www.tradingview.com",
+      "localStorage": [
+        {
+          "name": "example_localStorage",
+          "value": "dummy_value"
+        }
+      ]
+    }
+  ]
+}
