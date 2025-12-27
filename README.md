@@ -1,108 +1,77 @@
-Overview
+# TradingView Chart Automation & Flipbook Generator
 
-This project automates the process of capturing daily New York (NY) session charts from TradingView and generating PDF reports for multiple market symbols. The system is fully automated using Python and Playwright, ensuring you never miss a trading day’s snapshots.
+This project automates TradingView chart screenshots and generates
+daily PDFs and flipbook-style trading books for backtesting.
 
-Multi-symbol support: NQ, ES, CL, BTC
+It uses Playwright to load TradingView charts, capture screenshots,
+and automatically merge them into organized PDF books.
 
-Automated PDF generation for each symbol
+---
 
-Daily scheduling via Windows Task Scheduler
+## Features
+- Automated TradingView chart capture
+- Supports multiple symbols (NQ, ES)
+- Multiple timeframes (1m, 5m, 15m, 1h)
+- Saves charts by date
+- Generates daily PDFs
+- Maintains flipbook-style trading books
+- Optional parallel execution for faster processing
 
-Headless browser automation (no manual clicks required)
+---
 
-Features
+## Setup Instructions
 
-✅ Automated Chart Capture
+### 1. Install Python
+Python 3.10+ recommended
 
-Captures charts from TradingView for predefined symbols
+### 2. Install dependencies
+```bash
+pip install -r requirements.txt
 
-Saves both screenshots and PDFs in the samples/ folder
+3. Install Playwright browser
+python -m playwright install chromium
 
-✅ Multi-Symbol Support
+Authentication
 
-Easily configurable to capture any symbols you want
+Login session is handled using cookies saved in:
 
-Currently includes: NQ, ES, CL, BTC
-
-✅ Daily Automation
-
-Task Scheduler triggers the script daily at NY session close
-
-Fully hands-free workflow
-
-✅ Portfolio-Ready
-
-Demonstrates professional automation skills
-
-Ready for freelance or professional applications
-
-Installation
-
-Clone the project to your local machine
-
-Install dependencies:
-
-pip install playwright PyPDF2
-playwright install
+auth/tv_auth.json
 
 
-Set up authentication:
+You can generate it using:
 
-python auth/auth_setup.py
+python auth_setup.py
 
-
-This will save tv_auth.json with TradingView login cookies
-
-Usage
-Capture Charts
+Run Scripts
+Capture charts (single process)
 python capture_chart.py
 
+Faster parallel capture (recommended for large data)
+python capture_chart_parallel.py
 
-Captures all configured symbols
+Output
 
-Saves screenshots and PDFs to samples/
+All generated files are saved in:
 
-Merge PDFs into One Book
-python merge_book.py
+samples/
 
 
-Combines all symbol PDFs into Trading_Book.pdf
+Includes:
 
-Automation
+Daily screenshots
 
-Use Windows Task Scheduler to run capture_chart.py daily
+Daily PDFs
 
-Set the trigger at NY session close (7:45 PM NPT for Nepal)
-
-Optional: Add a second trigger 10 minutes later for backup
+Flipbook trading books (auto-updated)
 
 Notes
 
-Works on Windows with Python ≥3.10
+No TradingView API required
 
-Requires internet connection to access TradingView
+Works with Free or Pro TradingView accounts
 
-Headless browser ensures minimal interference
+Designed for backtesting and strategy review
 
-Easily extensible for additional symbols or sessions
 
-Skills Demonstrated
 
-Python scripting and automation
 
-Web automation with Playwright
-
-PDF handling and image processing
-
-Task Scheduler automation
-
-Professional project documentation
-
-Output Example
-samples/
-├── NQ_NY_Session_2025-12-26.png
-├── NQ_NY_Session_2025-12-26.pdf
-├── ES_NY_Session_2025-12-26.pdf
-├── CL_NY_Session_2025-12-26.pdf
-├── BTC_NY_Session_2025-12-26.pdf
-└── Trading_Book.pdf
